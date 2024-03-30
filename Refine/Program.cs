@@ -23,6 +23,7 @@ builder.Services.AddScoped<IAnrpcRepository, AnrpcRepository>();
 
 builder.Services.AddScoped<IAsrRepository, AsrRepository>();
 builder.Services.AddScoped<IDbInitializer, DbInitializer>();
+builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
@@ -36,18 +37,31 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
-app.UseRouting();
+ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
-//app.UseSession();
-
-SeedDatabase();
+ SeedDatabase();
+app.MapRazorPages();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
+using var scope = app.Services.CreateScope();
+var services = scope.ServiceProvider;
+var context = services.GetRequiredService<ApplicationDbContext>();
+//var identityContext = services.GetRequiredService<AppIdentityDbContext>();
+var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+var logger = services.GetRequiredService<ILogger<Program>>();
+try
+{
+    await context.Database.MigrateAsync();
+    //await identityContext.Database.MigrateAsync();
+     //await AppIdentityDbContextSeed.SeedUsersAsync(userManager);
+}
+catch (Exception ex)
+{
+    logger.LogError(ex, "An error occured during migration");
+}
 app.Run();
 void SeedDatabase()
 {
