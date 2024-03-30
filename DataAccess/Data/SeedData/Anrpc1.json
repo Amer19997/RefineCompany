@@ -1,0 +1,19 @@
+[
+  {
+    "RawMaterial": "نافتا",
+    "Production": "عام",
+    "Balance": 200,
+    "Receipts": 100
+
+  },
+
+  {
+    "RawMaterial": "مازوت",
+    "Production": "خاص",
+    "Balance": 200,
+    "Receipts": 100
+
+  }
+
+
+]

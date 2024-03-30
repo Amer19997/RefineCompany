@@ -1,5 +1,6 @@
 using BulkyBook.DataAccess.DbInitializer;
 using DataAccess.Data;
+using Infrastructure.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -55,8 +56,10 @@ var logger = services.GetRequiredService<ILogger<Program>>();
 try
 {
     await context.Database.MigrateAsync();
+    await ApplicationDbContextSeed.SeedAsync(context, userManager);
+
     //await identityContext.Database.MigrateAsync();
-     //await AppIdentityDbContextSeed.SeedUsersAsync(userManager);
+    //await AppIdentityDbContextSeed.SeedUsersAsync(userManager);
 }
 catch (Exception ex)
 {

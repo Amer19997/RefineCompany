@@ -45,7 +45,13 @@ namespace BulkyBook.DataAccess.DbInitializer {
                
             }, "Admin123*").GetAwaiter().GetResult();
 
+            _userManager.CreateAsync(new ApplicationUser
+            {
+                UserName = "Hanan",
+                Email = "admin@dotnetmasteries.com",
+                PhoneNumber = "343",
 
+            }, "Admin123*").GetAwaiter().GetResult();
             //create roles if they are not created
 
 
