@@ -10,7 +10,7 @@ using RefineModels.Models;
 using RefineModels.Models.ASR;
 namespace BulkyWeb.Controllers
 {
-    [Authorize(Roles = "Amer")]
+    //[Authorize(Roles = "Amer")]
     public class AsrController : Controller
     {
 
