@@ -305,11 +305,11 @@ strong {
   
 }
 .infobtn {
-    margin-right: 120px;
+    margin: 10px;
 }
  
 .loginbtn {
-    margin-left: 0px;
+    margin: 10px;
 }
 .custom-btn:hover {
   background: var(--custom-btn-bg-hover-color);
@@ -381,7 +381,7 @@ strong {
 }
 
 .navbar {
-    background: #efeeee;
+    background-color: black;
     z-index: 9;
     position: fixed;
     width: 100%;
@@ -937,7 +937,7 @@ strong {
 /*---------------------------------------
   RESPONSIVE STYLES               
 -----------------------------------------*/
-@media screen and (max-width: 991px) {
+/*@media screen and (max-width: 991px) {
   h1 {
     font-size: 62px;
   }
@@ -1007,7 +1007,7 @@ strong {
   .ticket-form {
     padding: 30px;
   }
-}
+}*/
 
 @media screen and (max-width: 767px) {
   .custom-btn {
