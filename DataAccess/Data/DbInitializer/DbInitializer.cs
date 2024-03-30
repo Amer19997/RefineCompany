@@ -37,10 +37,17 @@ namespace BulkyBook.DataAccess.DbInitializer {
             }
             catch(Exception ex) { }
 
+            _userManager.CreateAsync(new ApplicationUser
+            {
+                UserName = "admin@dotnetmastery.com",
+                Email = "admin@dotnetmastery.com",
+                 PhoneNumber = "1112223333",
+               
+            }, "Admin123*").GetAwaiter().GetResult();
 
 
             //create roles if they are not created
-           
+
 
             return;
         }
